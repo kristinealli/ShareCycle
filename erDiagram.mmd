@@ -1,0 +1,45 @@
+---
+title: "ShareCycle Database Schema"
+___
+
+erDiagram
+    USER ||..|| ITEM : owns
+    USER ||..|| LOAN : borrows
+    ITEM ||..|| LOAN : is
+    ITEM ||--|{ PHOTO : has
+    PHOTO ||--|| ITEM : is
+    
+    USER {
+        int user_id
+        string username
+        string email
+        string password_hash
+        date registration_date
+    }
+    
+    ITEM {
+        int item_id
+        string user_id
+        string item_name
+        string description
+        string category
+        boolean availability_status
+        int active_loan_id
+    }
+    
+    LOAN {
+        int loan_id
+        int item_id
+        int borrower_id
+        int lender_id
+        date loan_date
+        date due_date
+        string status_of_loan
+    }
+    
+    PHOTO {
+        int photo_id
+        int item_id
+        string photo_url
+        boolean is_before_photo
+    }   
