@@ -2,7 +2,6 @@ erDiagram
     USER ||--o{ ITEM : owns
     USER ||--o{ LOAN : "benefits from"
     ITEM ||--o{ LOAN : is
-    LOAN ||--|| ITEM : active_loan
     ITEM ||--o{ PHOTO : has
     PHOTO ||--|| ITEM : is
     
@@ -22,6 +21,7 @@ erDiagram
         string category
         boolean availability_status
         int photo_id FK
+        boolean has_active_loan
     }
     
     LOAN {
